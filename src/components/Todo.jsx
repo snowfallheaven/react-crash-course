@@ -1,6 +1,7 @@
 import "./Todo.css";
 
-function Todo() {
+function Todo(props) {
+  console.log(props);
   return (
       <div className="todo">
         <h2>Finish Frontend Simplified</h2>
