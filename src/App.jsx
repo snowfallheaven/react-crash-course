@@ -2,17 +2,41 @@ import "./App.css";
 import Todo from "./components/Todo.jsx";
 import Title from "./components/Title.jsx";
 import Modal from "./components/Modal.jsx";
+import Counter from "./components/Counter.jsx";
+import React, { useState } from "react";
 
 function App() {
+  return <Counter />
+  const [showModal, setShowModal] = useState(false)
+ 
+
   return (
     <div>
       <Title />
-      <div className="todo__wrapper">
-        <Todo Finish Frontend Simplified />
-        <Todo Finish Interview Section />
-        <Todo Land a $100k Job />
+      <div>
+        <input
+          type="text"
+          onChange={(event) => {
+            console.log(event.target.value);
+          }}
+        />
+        <button onClick={() => setShowModal(true)}>Add Todo</button>
       </div>
-      <Modal />
+      <div className="todo__wrapper">
+        <Todo
+          title="Finish Frontend Simplified"
+          paragraph="Code along with Frontend Simplified step by step."
+        />
+        <Todo
+          title="Finish Interview Section"
+          paragraph="Finish every interview question in the next 5 weeks."
+        />
+        <Todo
+          title="Land a $100k Job"
+          paragraph="Apply to 100 jobs. Secure a high-paying position."
+        />
+      </div>
+      {showModal && <Modal title="Confirm delete?" />}
     </div>
   );
 }
